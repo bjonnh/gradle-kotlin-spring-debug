@@ -9,6 +9,12 @@ apply {
     plugin("io.spring.dependency-management")
 }
 
+
+
+dependencyManagement {
+    imports { mavenBom("org.springframework.boot:spring-boot-dependencies:2.2.0.M2") }
+}
+
 repositories {
     mavenCentral()
     maven { setUrl("https://kotlin.bintray.com/kotlinx") }
