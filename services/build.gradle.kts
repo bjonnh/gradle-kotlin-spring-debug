@@ -1,24 +1,8 @@
 plugins {
-    kotlin("jvm")
     id("org.springframework.boot")
-    id("io.spring.dependency-management")
-    id("org.jetbrains.kotlin.plugin.spring")
-    id("org.jetbrains.kotlin.plugin.jpa")
 }
 
-apply {
-  plugin("io.spring.dependency-management")
-}
-
-dependencyManagement {
-    imports { mavenBom("org.springframework.boot:spring-boot-dependencies:2.2.0.M2") }
-}
-
-repositories {
-    mavenCentral()
-    maven { setUrl("https://kotlin.bintray.com/kotlinx") }
-}
-
+val springBootVersion: String by project
 dependencies {
     api("org.springframework.boot:spring-boot")
     compile("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.10.0")

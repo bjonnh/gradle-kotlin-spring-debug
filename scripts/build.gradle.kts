@@ -1,14 +1,6 @@
 plugins {
-    kotlin("jvm")
     //application
-    //id("org.springframework.boot")
-    id("io.spring.dependency-management")
-    id("org.jetbrains.kotlin.plugin.spring")
-    id("org.jetbrains.kotlin.plugin.jpa")
-}
-
-apply {
-    plugin("io.spring.dependency-management")
+    id("org.springframework.boot")
 }
 
 /*application {
@@ -32,9 +24,9 @@ dependencies {
         exclude(group="org.apache.zookeeper", module="zookeeper")
     }
 
-    compile(platform(project(":connector")))
+    // TODO uncomment these when you've created the submodule
+//    compile(project(":connector"))
+//    compile(project(":configurationmanager"))
 
-    compile(platform(project(":configurationmanager")))
-
-    implementation(platform(project(":api-library")))
+    implementation(project(":api-library"))
 }
