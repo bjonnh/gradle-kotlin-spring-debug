@@ -1,7 +1,7 @@
 plugins {
     kotlin("jvm")
-    application
-    id("org.springframework.boot")
+    //application
+    //id("org.springframework.boot")
     id("io.spring.dependency-management")
     id("org.jetbrains.kotlin.plugin.spring")
     id("org.jetbrains.kotlin.plugin.jpa")
@@ -11,13 +11,9 @@ apply {
     plugin("io.spring.dependency-management")
 }
 
-dependencyManagement {
-    imports { mavenBom("org.springframework.boot:spring-boot-dependencies:2.2.0.M2") }
-}
-
-application {
+/*application {
     mainClassName = "net.nprod.napralertmatcher.scripts.MainKt"
-}
+}*/
 
 dependencies {
     api("org.springframework.boot:spring-boot")
@@ -31,8 +27,14 @@ dependencies {
     compile("com.h2database:h2:1.4.198")
     compile("org.postgresql:postgresql:42.2.5")
 
-    compile(project(":services"))  {
-        exclude("ch.qos.logback")
-        exclude("org.slf4j")
+    compile("org.springframework.cloud:spring-cloud-starter-zookeeper-all:2.1.1.RELEASE") {
+        exclude(module="spring-boot-starter-logging")
+        exclude(group="org.apache.zookeeper", module="zookeeper")
     }
+
+    compile(platform(project(":connector")))
+
+    compile(platform(project(":configurationmanager")))
+
+    implementation(platform(project(":api-library")))
 }

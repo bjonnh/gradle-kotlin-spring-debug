@@ -34,6 +34,11 @@ allprojects {
         kotlinOptions.jvmTarget = "1.8"
         kotlinOptions.freeCompilerArgs = listOf("-Xjsr305=strict")
     }
+
+
+    dependencyManagement {
+        imports { mavenBom("org.springframework.boot:spring-boot-dependencies:2.2.0.M2") }
+    }
 /*
 
     dependencyManagement {
