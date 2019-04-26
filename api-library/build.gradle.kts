@@ -1,23 +1,7 @@
 plugins {
     kotlin("jvm")
-    id("io.spring.dependency-management")
-    id("org.jetbrains.kotlin.plugin.spring")
-    id("org.jetbrains.kotlin.plugin.jpa")
-}
-
-apply {
-    plugin("io.spring.dependency-management")
-}
-
-
-
-dependencyManagement {
-    imports { mavenBom("org.springframework.boot:spring-boot-dependencies:2.2.0.M2") }
-}
-
-repositories {
-    mavenCentral()
-    maven { setUrl("https://kotlin.bintray.com/kotlinx") }
+    kotlin("plugin.jpa")
+    kotlin("plugin.spring")
 }
 
 dependencies {
@@ -32,8 +16,8 @@ dependencies {
         exclude(module="spring-boot-starter-logging")
     }
 
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation(kotlin("reflect"))
+    implementation(kotlin("stdlib-jdk8"))
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
